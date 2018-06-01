@@ -28,6 +28,8 @@ public class ViewNames {
     public static final String LEMMA = "LEMMA";
     public static final String POS = "POS";
 
+    public static final String ROMANIZATION = "ROMANIZATION";
+
     /** the tree gazetteer produced by the SimpleGazetteerAnnotator. */
     public static final String TREE_GAZETTEER = "TREE_GAZETTEER";
 
