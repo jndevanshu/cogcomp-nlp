@@ -6,8 +6,8 @@ cpath="target/classes:target/dependency/*:config"
 
 LANG=$1
 
-
-CONFIG=config/tacl/$LANG.config
+CONFIG=config/lrlp/$LANG.config
+#CONFIG=config/tacl/$LANG.config
 #CONFIG=config/lrlp/default.config
 
 #CONFIG=config/mono.config
@@ -38,7 +38,7 @@ CONFIG=config/tacl/$LANG.config
 #TRAIN=/home/mayhew/data/CALCS2018/CALCS_ENG_SPA/Train
 #TRAIN=/shared/corpora/ner/lorelei-swm-new/yo/Train
 #TRAIN=/shared/corpora/corporaWeb/lorelei/evaluation-upenn-20180402/processed/il5/train/reflex-json,/shared/corpora/corporaWeb/lorelei/evaluation-upenn-20180402/processed/il5/train/set1-twitter
-TRAIN=/shared/corpora/corporaWeb/lorelei/evaluation-upenn-20180402/processed/il6/train/alltrain-json
+#TRAIN=/shared/corpora/corporaWeb/lorelei/evaluation-upenn-20180402/processed/il6/train/alltrain-json
 
 #TEST=/shared/corpora/ner/lorelei/$LANG/Train-0.25-weighted
 #TEST=/shared/corpora/ner/lorelei/om/Test
@@ -50,10 +50,9 @@ TRAIN=/shared/corpora/corporaWeb/lorelei/evaluation-upenn-20180402/processed/il6
 #TEST=/home/mayhew/data/broad_twitter_corpus/setH2
 #TEST=/shared/corpora/ner/lorelei/ug/All-stem-best
 #TEST=/home/mayhew/data/CALCS2018/CALCS_ENG_SPA/Dev
-TEST=/shared/corpora/ner/lorelei-swm-new/orm/All-json/
+#TEST=/shared/corpora/ner/lorelei-swm-new/orm/All-json/
 
-CMD="java -classpath  ${cpath} -Xmx16g edu.illinois.cs.cogcomp.ner.LbjTagger.LORELEIRunner -train $TRAIN -test $TEST -cf $CONFIG -lang $LANG -format ta"
-
+CMD="java -classpath  ${cpath} -Xmx16g edu.illinois.cs.cogcomp.ner.LbjTagger.LORELEIRunner -train $2 -test $3 -cf $CONFIG -format ta -outpath $4"
 
 #echo $TRAIN
 #datastats.py $TRAIN
