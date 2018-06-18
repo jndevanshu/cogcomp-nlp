@@ -439,6 +439,20 @@ discrete% BrownClusterPaths(NEWord word) <-
 	}
 }
 
+// Problem 1
+discrete% EpitranForm(NEWord word) <-
+{
+	if(ParametersForLbjCode.currentParameters.featuresToUse.containsKey("Epitran"))
+	{
+		int i;
+		NEWord w = word, last = word;
+		for (i = 0; i <= 2 && last != null; ++i) last = (NEWord) last.next;
+		for (i = 0; i > -2 && w.previous != null; --i) w = (NEWord) w.previous;
+
+		for (; w != last; w = (NEWord) w.next) sense i++ : w.epitran;
+	}
+}
+
 
 // Problem 1
 discrete% FormParts(NEWord word) <-

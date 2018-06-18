@@ -11,6 +11,7 @@
 package edu.illinois.cs.cogcomp.ner.LbjTagger;
 
 import edu.illinois.cs.cogcomp.core.datastructures.ViewNames;
+import edu.illinois.cs.cogcomp.ner.Epitran;
 import edu.illinois.cs.cogcomp.ner.ExpressiveFeatures.BrownClusters;
 import edu.illinois.cs.cogcomp.ner.ExpressiveFeatures.GazetteersFactory;
 import edu.illinois.cs.cogcomp.ner.ExpressiveFeatures.TitleTextNormalizer;
@@ -296,6 +297,11 @@ public class Parameters {
                         maxPhraseLength = rm.getInt(NerBaseConfigurator.PHRASE_LENGTH);
                     GazetteersFactory.init(maxPhraseLength, pathToGazetteersLists, false);
                 }
+            }
+
+            if(rm.containsKey("Epitran") && rm.getString("Epitran").equals("1")){
+                String pathToEpitranDictionary = rm.getString("pathToEpitranDictionary");
+                Epitran.loadEpitrainMapping(pathToEpitranDictionary);
             }
 
             // WordEmbeddings feature

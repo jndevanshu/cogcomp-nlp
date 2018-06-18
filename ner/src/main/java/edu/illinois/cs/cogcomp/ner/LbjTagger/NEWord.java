@@ -43,6 +43,8 @@ public class NEWord extends Word implements WeightedObject
 	public String originalSpelling="";
 	public String[] parts;
 
+	public String epitran = "";
+
 
 //	private ArrayList<DiscreteFeature> generatedDiscreteFeaturesNonConjunctive=null;
 //	public ArrayList<DiscreteFeature> getGeneratedDiscreteFeaturesNonConjunctive() {

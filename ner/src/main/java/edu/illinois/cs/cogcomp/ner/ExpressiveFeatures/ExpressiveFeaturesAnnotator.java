@@ -14,6 +14,7 @@ import edu.illinois.cs.cogcomp.ner.InferenceMethods.Decoder;
 import edu.illinois.cs.cogcomp.ner.LbjFeatures.NETaggerLevel1;
 import edu.illinois.cs.cogcomp.ner.LbjFeatures.NETaggerLevel2;
 import edu.illinois.cs.cogcomp.ner.LbjTagger.*;
+import edu.illinois.cs.cogcomp.ner.Epitran;
 import edu.illinois.cs.cogcomp.ner.WordEmbedding;
 import edu.illinois.cs.cogcomp.lbjava.parse.LinkedVector;
 import org.slf4j.Logger;
@@ -157,6 +158,21 @@ public class ExpressiveFeaturesAnnotator {
             }
             logger.debug("Null words percentage: " + ((nullwords) / (float)total));
             logger.debug("Done setting embeddings features.");
+        }
+
+        if(ParametersForLbjCode.currentParameters.featuresToUse.containsKey("Epitran")){
+            logger.debug("Setting Epitran features");
+            for(int docid=0;docid<data.documents.size();docid++) {
+                ArrayList<LinkedVector> sentences = data.documents.get(docid).sentences;
+                for(int i=0;i<sentences.size();i++){
+                    logger.debug("On sentence: " + i);
+                    LinkedVector vector=sentences.get(i);
+                    for(int j=0;j<vector.size();j++) {
+                        NEWord w = (NEWord) vector.get(j);
+                        w.epitran = Epitran.getIPARepresentation(w.form);
+                    }
+                }
+            }
         }
 
 
